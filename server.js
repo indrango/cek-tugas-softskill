@@ -23,10 +23,11 @@ if (app.get('env') === 'development') {
   app.use(morgan('dev'));
 }
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
 })
 
+// connect database
 mongoose.connect(config.database, (err) => {
   if (err)
     console.log('Connection failed');
