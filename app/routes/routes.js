@@ -6,11 +6,11 @@ module.exports = function(app) {
   app.route('/api/data')
     // get data
     .get(function(req, res) {
-      Data.find(function(err, users) {
+      Data.find(function(err, datas) {
         if (err)
           res.send(err);
 
-        res.json(users);
+        res.json(datas);
       });
     })
 
@@ -21,11 +21,24 @@ module.exports = function(app) {
       data.nama = req.body.nama;
 
       // save data
-      user.save(function(err, users) {
+      data.save(function(err, datas) {
         if (err)
           res.send(err);
 
-        res.json(users);
+        res.json(datas);
+      });
+    })
+
+    // data from /api/data/:user_id
+    app.route('/api/data/:user_id')
+
+    // delete data
+    .delete(function(req, res) {
+      Data.findByIdAndRemove({_id : req.params.user_id}, function(err, datas) {
+        if (err)
+          res.send(err)
+
+        res.json(datas);
       });
     });
 }
