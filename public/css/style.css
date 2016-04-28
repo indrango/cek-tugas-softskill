@@ -1,0 +1,24 @@
+body {
+  background-color: #D0D0D0;
+}
+
+#head {
+  background-color: #2634B4;
+  color: white;
+  height: 200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#head-text {
+  text-align: center;
+}
+
+#head-content {
+  font-size: 18px;
+  text-align: center;
+}
+
+#content {
+  background-color: #EAEDFF;
+}
