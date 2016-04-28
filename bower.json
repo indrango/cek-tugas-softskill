@@ -1,0 +1,20 @@
+{
+  "name": "cek-tugas-softskill",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Indra Nugraha"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/indrango/cek-tugas-softskill",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

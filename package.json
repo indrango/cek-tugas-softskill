@@ -1,0 +1,26 @@
+{
+  "name": "cek-tugas-softskill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indrango/cek-tugas-softskill.git"
+  },
+  "author": "Indra Nugraha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indrango/cek-tugas-softskill/issues"
+  },
+  "homepage": "https://github.com/indrango/cek-tugas-softskill#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.14",
+    "morgan": "^1.7.0"
+  }
+}
