@@ -1,14 +1,14 @@
 // set up packages
-var express = require('express');
-var app = express();
-var config = require('./app/config/config');
-var Data = require('./app/models/data');
+const express = require('express');
+const app = express();
+const config = require('./app/config/config');
+const Data = require('./app/models/data');
 
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var methodOverride = require('method-override');
-var mongoose = require('mongoose');
-var path = require('path');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+const path = require('path');
 
 // set up environtments
 app.use(express.static(__dirname + '/bower_components'));
@@ -23,11 +23,11 @@ if (app.get('env') === 'development') {
   app.use(morgan('dev'));
 }
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
 })
 
-mongoose.connect(config.database, function(err) {
+mongoose.connect(config.database, (err) => {
   if (err)
     console.log('Connection failed');
 })
