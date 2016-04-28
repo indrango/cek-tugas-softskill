@@ -1,12 +1,13 @@
-var Data = require('../models/data');
+'use strict';
+const Data = require('../models/data');
 
 module.exports = function(app) {
 
   // add data from /api/data
   app.route('/api/data')
     // get data
-    .get(function(req, res) {
-      Data.find(function(err, datas) {
+    .get((req, res) => {
+      Data.find((err, datas) => {
         if (err)
           res.send(err);
 
@@ -15,13 +16,13 @@ module.exports = function(app) {
     })
 
     // post data
-    .post(function(req, res) {
-      var data = new Data();
+    .post((req, res) => {
+      let data = new Data();
       data.judul = req.body.judul;
       data.nama = req.body.nama;
 
       // save data
-      data.save(function(err, datas) {
+      data.save((err, datas) => {
         if (err)
           res.send(err);
 
@@ -33,8 +34,8 @@ module.exports = function(app) {
     app.route('/api/data/:user_id')
 
     // delete data
-    .delete(function(req, res) {
-      Data.findByIdAndRemove({_id : req.params.user_id}, function(err, datas) {
+    .delete((req, res) => {
+      Data.findByIdAndRemove({_id : req.params.user_id}, (err, datas) => {
         if (err)
           res.send(err)
 
