@@ -14,6 +14,7 @@ const path = require('path');
 app.use(express.static(__dirname + '/bower_components'));
 app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/js'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -23,7 +24,7 @@ if (app.get('env') === 'development') {
   app.use(morgan('dev'));
 }
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
 })
 
