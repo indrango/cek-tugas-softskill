@@ -1,3 +1,4 @@
+"use strict";
 // set up packages
 const express = require('express');
 const app = express();
