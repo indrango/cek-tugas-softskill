@@ -1,4 +1,4 @@
 module.exports = {
-  'database' : 'mongodb://localhost/cek-tugas-softskill',
+  'database' : 'mongodb://admin:admin123#@ds021671.mlab.com:21671/cek-tugas-softskill',
   'port' : '8000'
 }
