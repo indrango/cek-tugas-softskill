@@ -15,9 +15,32 @@ angular.module('dataApp', ['dataServices'])
   all();
 
   // create data
-  $scope.createData = function() {
-    Data.create($scope.data).success(function(data) {
-      console.log(data);
+  $scope.createData = function(data) {
+    if (($scope.data.judul != null) && ($scope.data.nama != null)) {
+      Data.create(data).success(function(data) {
+        // console.log(data);
+        all();
+      });
+    }
+  };
+
+  // delete data
+  $scope.deleteData = function(id) {
+    Data.delete(id).success(function(data) {
+      all();
+    });
+  };
+
+  $scope.editData = function(id) {
+    Data.get(id).success(function(datas) {
+      $scope.data = datas;
+    });
+    $scope.nilai = "edit";
+  };
+
+  // update data
+  $scope.updateData= function(id) {
+    Data.update($scope.data._id, $scope.data).success(function(data) {
       all();
     });
   };
