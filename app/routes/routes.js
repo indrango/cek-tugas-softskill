@@ -53,6 +53,7 @@ module.exports = function(app) {
         if (req.body.judul) data.judul = req.body.judul;
         if (req.body.nama) data.nama = req.body.nama;
 
+        // save data
         data.save((err, datas) => {
           if (err)
             res.send(err);
