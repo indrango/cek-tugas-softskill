@@ -6,6 +6,7 @@ const config = require('./app/config/config');
 const Data = require('./app/models/data');
 
 const bodyParser = require('body-parser');
+const favicon = require('serve-favicon');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/js'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));
+app.use(favicon(__dirname + '/public/favicon/favicon.ico'));
 app.use(bodyParser.json());
 app.use(methodOverride());
 // app.use(morgan('dev'));
