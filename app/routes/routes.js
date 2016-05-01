@@ -33,6 +33,35 @@ module.exports = function(app) {
     // data from /api/data/:user_id
     app.route('/api/data/:user_id')
 
+    // get data
+    .get((req, res) => {
+      Data.findById({_id : req.params.user_id}, (err, datas) => {
+        if (err)
+          res.send(err);
+
+        res.send(datas);
+      });
+    })
+
+    // update data
+    .put((req, res) => {
+      Data.findById({_id : req.params.user_id}, (err, data) => {
+        if (err)
+          res.send(err)
+
+        // req data
+        if (req.body.judul) data.judul = req.body.judul;
+        if (req.body.nama) data.nama = req.body.nama;
+
+        data.save((err, datas) => {
+          if (err)
+            res.send(err);
+
+          res.json(datas);
+        });
+      });
+    })
+
     // delete data
     .delete((req, res) => {
       Data.findByIdAndRemove({_id : req.params.user_id}, (err, datas) => {
