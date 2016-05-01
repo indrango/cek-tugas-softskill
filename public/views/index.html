@@ -5,6 +5,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <!-- JS -->
     <script type="text/javascript" src="angular/angular.min.js"></script>
     <script type="text/javascript" src="js/dataController.js"></script>
@@ -18,7 +19,7 @@
       <div class="jumbotron" id="head">
         <h1 id="head-text">Cek Tugas Softskill</h1>
         <p id="head-content">
-          Masukan nama pemerintah/ universitas dan nama kalian pada form dibawah ini.<br  />
+          Masukan nama lembaga pemerintah/ universitas dan nama kalian pada form dibawah ini.<br  />
           Apabila sudah terdapat nama yang sama maka tidak bisa digunakan kembali.
         </p>
       </div>
@@ -32,21 +33,27 @@
             <table class="table table-border table-striped">
               <thead>
                 <tr>
-                  <th class="text-center">
-                    Nama Universitas
+                  <th>
+                    Pemerintah/ Universitas
                   </th>
-                  <th class="text-center">
-                    Nama
+                  <th>
+                    Nama Anda
+                  </th>
+                  <th>
+                    Aksi
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat = "data in dataList">
+                <tr ng-repeat = "datas in dataList | filter : filter">
                   <td>
-                    {{ data.judul }}
+                    {{ datas.judul }}
                   </td>
                   <td>
-                    {{ data.nama }}
+                    {{ datas.nama }}
+                  </td>
+                  <td>
+                    <button type="submit" class="btn btn-warning" ng-click="editData(datas._id)">Edit</button>
                   </td>
                 </tr>
               </tbody>
@@ -55,14 +62,24 @@
 
           <!-- right row -->
           <div class="col-md-3" id="content-right">
-            <form class="form-group">
+            <form class="form-group" name="dataForm">
               <div class="form-group">
-                <input ng-model="data.judul" class="form-control" placeholder="Perusahaan/Universitas"/>
+                <label>
+                  Cek data :
+                </label>
+                <input type="text" class="form-control" placeholder="Judul" ng-model="filter" />
               </div>
               <div class="form-group">
-                <input ng-model="data.nama" class="form-control" placeholder="Nama Anda"/>
+                <label>Masukan data : </label>
+                <input ng-model="data.judul" class="form-control" placeholder="Perusahaan/Universitas" required/>
               </div>
-              <button type="submit" class="btn btn-default" ng-click="createData()">Tambah</button>
+              <div class="form-group">
+                <input ng-model="data.nama" class="form-control" placeholder="Nama Anda" required/>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-default btn-success" ng-click="createData(data)">Tambah</button>
+                <button type="submit" class="btn btn-default" ng-click="updateData(data)">Perbarui</button>
+              </div>
             </form>
           </div>
         </div>
@@ -70,7 +87,9 @@
 
     <!-- footer -->
     <footer>
-
+      <div id="footer">
+        <h4>Made with <i class="fa fa-heart" aria-hidden="true"></i> by Indra</h4>
+      </div>
     </footer>
 
   </body>

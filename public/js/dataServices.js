@@ -9,7 +9,13 @@ angular.module('dataServices', [])
       return $http.post('/api/data', data);
     },
     delete: function(id) {
-      return $http.delete('/api/data', id);
+      return $http.delete('/api/data/' +  id);
+    },
+    get: function(id) {
+      return $http.get('/api/data/' + id)
+    },
+    update: function(id, data) {
+      return $http.put('/api/data/'+ id, data);
     }
   }
 }]);
